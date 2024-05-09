@@ -34,6 +34,7 @@ Route::resource('virements',VirementController::class)
         ->only(['create','store']);
 Route::middleware(['auth', 'isEmployer'])->group(function () {
     Route::resource('clients',ClientController::class);
+    Route::get('dons/{id}',[\App\Http\Controllers\DonController::class,'show']);
 });
 Route::get('clients/{client}/virements',[VirementController::class,'consulter'])
         ->name('virements.consulter');

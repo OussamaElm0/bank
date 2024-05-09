@@ -51,7 +51,8 @@ class DonController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Don::find($id)
+                    ->clients;
     }
 
     /**
