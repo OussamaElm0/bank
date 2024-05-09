@@ -83,7 +83,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('clients.index');
     }
 
     public static function updateMontant(Client $client,$montant)
