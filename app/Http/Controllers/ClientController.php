@@ -66,4 +66,11 @@ class ClientController extends Controller
     {
         //
     }
+
+    public static function updateMontant(Client $client,$montant)
+    {
+        $client->solde -= $montant;
+
+        $client->save();
+    }
 }

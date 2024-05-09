@@ -25,6 +25,7 @@ class VirementController extends Controller
                 'client_id' => $client->id,
                 'motif' => $request->motif,
             ]);
+            ClientController::updateMontant($client,$request->montant);
 
             return redirect()->route('clients.index')->with('success','Virement validé');
         } else {
