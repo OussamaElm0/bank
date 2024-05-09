@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\User;
+use App\Models\Don;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -99,5 +100,13 @@ class ClientController extends Controller
         $client->solde -= $montant;
 
         $client->save();
+    }
+    public function show_dons(Client $client)
+    {
+        if(Auth::user()->client == $client) {
+            return $client->dons;
+        } else {
+            return 'You are not allowed';
+        }
     }
 }

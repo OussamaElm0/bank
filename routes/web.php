@@ -38,4 +38,13 @@ Route::middleware(['auth', 'isEmployer'])->group(function () {
 Route::get('clients/{client}/virements',[VirementController::class,'consulter'])
         ->name('virements.consulter');
 
+Route::middleware('isClient')->group(function (){
+    Route::get('clients/{client}/dons',[ClientController::class,'show_dons'])
+            ->name('clients.dons');
+    Route::get('clients/{client}/dons/create',[\App\Http\Controllers\DonController::class,'create'])
+        ->name('clients.dons.create');
+    Route::post('dons',[\App\Http\Controllers\DonController::class,'store'])
+        ->name('dons.store');
+});
+
 require __DIR__.'/auth.php';
