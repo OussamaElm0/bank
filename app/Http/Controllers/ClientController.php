@@ -13,9 +13,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Auth::user()->client->virements;
         return view('clients.index', [
-            'virements' => Auth::user()->client->virements
+            'clients' => Client::all(),
         ]);
     }
 
@@ -24,7 +23,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('virements.create');
+        return view('clients.create');
     }
 
     /**
