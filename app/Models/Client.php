@@ -25,6 +25,6 @@ class Client extends Model
     }
     public function dons()
     {
-        return $this->belongsToMany(Don::class);
+        return $this->belongsToMany(Don::class)->withPivot('montant');
     }
 }
