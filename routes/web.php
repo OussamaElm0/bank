@@ -32,6 +32,10 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('virements',VirementController::class)
         ->only(['create','store']);
-Route::resource('clients',ClientController::class);
+Route::middleware(['auth', 'isEmployer'])->group(function () {
+    Route::resource('clients',ClientController::class);
+});
+Route::get('clients/{client}/virements',[VirementController::class,'consulter'])
+        ->name('virements.consulter');
 
 require __DIR__.'/auth.php';

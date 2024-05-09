@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Virement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,9 +28,14 @@ class VirementController extends Controller
             ]);
             ClientController::updateMontant($client,$request->montant);
 
-            return redirect()->route('clients.index')->with('success','Virement validé');
+            return redirect()->route('virements.consulter',['client' => $client])
+                            ->with('success','Virement validé');
         } else {
             return redirect()->back()->with('error','Votre sole est insuffisant');
         }
+    }
+    public function consulter(Client $client)
+    {
+        return $client->virements;
     }
 }
