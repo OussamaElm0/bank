@@ -9,6 +9,12 @@ class Virement extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'montant',
+        'client_id',
+        'motif',
+    ];
+
     public function client()
     {
         return $this->belongsTo(Client::class);

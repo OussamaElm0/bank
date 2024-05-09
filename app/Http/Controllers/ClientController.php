@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -12,7 +13,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return Auth::user()->client->virements;
+        return view('clients.index', [
+            'virements' => Auth::user()->client->virements
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('virements.create');
     }
 
     /**
