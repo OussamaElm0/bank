@@ -23,4 +23,8 @@ class Client extends Model
     {
         return $this->hasMany(Virement::class);
     }
+    public function dons()
+    {
+        return $this->belongsToMany(Don::class);
+    }
 }
